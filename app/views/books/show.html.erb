@@ -1,0 +1,60 @@
+<%= flash[:notice] %>
+<div class="col-md-3">
+	<h1>User info</h1>
+	<%= attachment_image_tag @post_book.user, :profile_image, :fill, 60, 60, format:'jpeg', fallback: "no_image.jpg"%>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>name</td>
+				<td><%= @post_book.user.name %></td>
+			</tr>
+			<tr>
+				<td>introduction</td>
+				<td><%= @post_book.user.introduction %></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<%= link_to "Edit", edit_user_path(current_user.id), class: "btn btn-default col-md-12"%>
+
+	<h1>New book</h1>
+	<%= form_for(@book, url: books_path) do |f| %>
+		<label class="col-md-12", for="book_title">Title</label>
+		<%= f.text_field :title, class: "col-md-12", id: "book_title" %>
+		<label class="col-md-12", for="book_opinion">Opinion</label>
+		<%= f.text_area :body, class: "col-md-12", id: "book_opinion" %>
+		<%= f.submit "Create Book", class: "col-md-12 btn btn-primary" %>
+	<% end %>
+</div>
+
+<div class="col-md-9">
+	<h1>Books</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Title</th>
+					<th>Opinion</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<%= link_to user_path(@post_book.user.id) do %>
+							<%= attachment_image_tag @post_book.user, :profile_image, :fill, 60, 60, format:'jpeg', fallback: "no_image.jpg", :width => "40", :height => "40"%>
+							<br>
+							<%= @post_book.user.name%>
+						<% end %>
+					</td>
+					<td><%= @post_book.title %></td>
+					<td><%= @post_book.body %></td>
+					<% if @post_book.user.id==current_user.id%>
+						<td><%= link_to "Edit", edit_book_path(@post_book.id), class: "btn btn-success" %></td>
+						<td><%= link_to "Destroy", book_path(@post_book.id), method: :delete, class: "btn btn-danger" %></td>
+					<% end %>
+				</tr>
+			</tbody>
+		</table>
+	
+</div>

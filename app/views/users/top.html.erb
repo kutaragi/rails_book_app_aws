@@ -1,0 +1,8 @@
+<%= flash[:notice] %>
+<div class="top">
+	<h1>Welcom to Bookers!!</h1>
+	<p>In Bookers,<br>you can share and exchange your opinions , inpressions , and emotions<br>about varioius books!</p>
+
+	<%= link_to "Log in", new_user_session_path, class: "log-in col-10-md btn btn-info" %>
+	<%= link_to "Sign up", new_user_registration_path, class: "sign-up col-10-md btn btn-success" %>
+</div>
