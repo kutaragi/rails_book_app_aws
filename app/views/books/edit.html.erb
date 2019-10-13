@@ -1,14 +1,6 @@
-<%= flash[:notice] %>
-<% if @edit_book.errors.any? %>
-    <div>
-        <ul>
-            <% @edit_book.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-            <% end %>
-        </ul>
-    </div>
-<% end %>
-<div class="edit_book">
+<div class="others">
+	<%= flash[:notice] %>
+	<%= render 'books/errors', book: @edit_book %>
 	<h1>Editing Book</h1>
 	<%= form_for (@edit_book) do |f| %>
 		<div class="field">
@@ -20,10 +12,10 @@
 			<%= f.text_area :body, id: "opinion", class: "col-md-12"%>
 		</div>
 		<%= f.submit "Update Book", class: "btn btn-primary col-md-12" %>
-		<div>
-		<%= link_to "show", book_path(@edit_book.id)%>
-		<span>|</span>
-		<%= link_to "back", books_path %>
+		<div class="link">
+			<%= link_to "show", book_path(@edit_book.id), class: "btn"%>
+			<span>|</span>
+			<%= link_to "back", books_path, class: "btn" %>
 		</div>
 	<% end %>
 

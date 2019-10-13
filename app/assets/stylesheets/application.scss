@@ -14,42 +14,250 @@
  *= require_self
  *= require font-awesome
  */
-@import "bootstrap-sprockets";
-@import "bootstrap";
+/*@import "bootstrap-sprockets";*/
+/*@import "bootstrap";*/
 @import "font-awesome";
 
-.container {
-	margin: 0 auto;
-	width: 970px;
+
+$sp: 760px;
+
+
+
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
 }
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	color: #fff;
+	background-color: #ffb6c1;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+}
+
+a:hover {
+	border-bottom: 1px solid #fff;
+}
+
+.flash {
+	
+}
+
+li {
+	list-style: none;
+}
+
+
 
 .header .container {
 	width: 100%;
 	padding: 0;
 }
 
-.nav-wrap {
-	width: 970px;
-	margin: 0 auto;
+.wrap {
+	width: 1000px;
+	margin: 30px auto;
+	background-color: #ff69b4;
+	border: solid 3px #c71585;
+	overflow:hidden;
+	border-radius: 10px;
+	box-shadow: 15px 15px #da70d6;
+	
+}
+
+.header-wrap {
+	width: 95%;
+	margin: 20px auto;
+    padding: 10px 0;
+	background-color: #ff69b4;
 	display: flex;
     justify-content: space-between;
 }
 
-.navbar-brand {
-	color: #ffffff;
+.content-wrap {
+	width: 95%;
+	margin: 0 auto 20px;
+	padding-bottom: 40px;
+	background-color: #ff69b4;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-wrap {
+	width: 95%;
+	margin: 0 auto;
+	padding: 20px 0;
+	background-color: #ff69b4;
+}
+
+.logo {
+	font-size: 40px;
+	font-weight: 900;
+    font-family: fantasy;
+    margin-top: 8px;
+}
+
+.nav {
+	display: flex;
+}
+
+.nav li {
+	margin-left: 20px;
+	padding: 20px;
+    font-size: 20px;
+    
+}
+
+.nav li a {
+	border-bottom: 3px solid #fff;
+	display: inline-block;
+}
+
+.nav li a:hover {
+	border-bottom: 5px dotted #000080;
+	color: #000080;
+}
+
+.nav li:nth-of-type(2n+1) {
+	margin-bottom: 10px;
+}
+
+.nav li:nth-of-type(2n) {
+	margin-top: 10px;
+}
+
+h1 {
+	border-bottom: solid 2px #fff;
+	margin: 30px 0;
+	font-family: fantasy;
+}
+
+.aside {
+	flex-basis: 25%;
+}
+
+.main {
+	flex-basis: 73%;
+}
+
+.item {
+	font-size: 20px;
+    font-weight: 600;
+    border-bottom: solid 1px #fff;
+    margin-bottom: 15px;
+}
+
+.data {
+	padding-left: 20px;
+	margin-bottom: 15px;
+}
+
+label {
+	font-size: 20px;
+    font-weight: 600;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#book_opinion {
+	display: block;
+}
+
+.table {
+    border-collapse: separate;
+    border-spacing: 8px 0px;
+    width: 100%;
+}
+
+td {
+	border: solid 6px #ff69b4;
+}
+
+th {
+	text-align: left;
+	padding: 0 0 10px 10px;
+}
+
+.btn {
+	font-size: 20px;
+	background-color: #000080;
+	border-radius: 8px;
+	padding: 10px;
+	color: #fff;
+	border: 3px solid #fff;
+}
+
+.btn:hover {
+	border: 3px solid #000080;
+	color: #000080;
+	background-color: #fff;
+	box-shadow: 5px 5px 3px #add8e6;
+}
+
+.btn-wrap {
+	text-align: center;
+	margin-top: 30px;
 }
 
 .top {
 	margin: 0 auto;
-	width: 500px;
+	width: 600px;
 }
 
-.log-in {
-	width: 90%;
+.top p {
+	margin-bottom: 30px;
 }
 
-.sign-up {
-	width: 90%;
+.top .btn {
+	margin: 20px;
+}
+
+.others h2 {
+	margin-top: 30px;
+}
+
+.field {
+	margin: 30px;
+}
+
+.others {
+	margin: 0 auto;
+	width: 70%;
+}
+
+.others label {
+	margin-bottom: 15px;
+}
+
+.others input {
+	font-size: 18px;
+}
+
+.others textarea {
+	font-size: 15px;
+}
+
+.link .btn {
+	font-size: 12px;
+}
+
+.link {
+	margin-top: 20px;
+}
+
+.user_name {
+	font-size: 20px;
 }
 
 .footer {
@@ -71,3 +279,8 @@
 	display: block;
 }
 
+@media only screen and (max-width:765px) {
+    .wrap {
+    	width: 100%;
+    }
+}

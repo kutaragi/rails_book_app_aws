@@ -1,0 +1,8 @@
+<div class="user_info">
+    <h1>User info</h1>
+	<%= attachment_image_tag user, :profile_image, :fill, 60, 60, format:'jpeg', fallback: "no_image.jpg"%>
+	<p class="item">name</p>
+	<p class="data"><%= user.name %></p>
+	<p class="item">introduction</p>
+	<p class="data"><%= user.introduction %></p>
+</div>
