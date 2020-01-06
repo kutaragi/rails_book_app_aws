@@ -35,6 +35,46 @@
 				</tr>
 			</tbody>
 		</table>
-	
+
+		<!-- いいね -->
+		<div class="favo">
+			<% if @book.favorited_by?(current_user) %>
+				<%= link_to book_favorites_path(@book), method: :delete do %>
+					<i class="fa fa-heart" style="color: red;"></i>
+				<% end %>
+			<% else %>
+				<%= link_to book_favorites_path(@book), method: :post do %>
+					<i class="fa fa-heart"></i>
+				<% end %>
+			<% end %>
+			<%= @book.favorites.count %>いいね
+		</div>
+
+		<!-- コメント -->
+		<div class="comme">
+		<%= form_for [@book, @comment] do |f| %>
+			<%= f.text_area :comment, rows:'5', placeholder: "コメントをどうぞ", class: "comme-text" %><br>
+			<%= f.submit "コメントを送る", class: "btn" %>
+		<% end %>
+		<table>
+			<thead>
+				<tr>
+					<th>User</th>
+					<th>Date</th>
+					<th>Comment</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% @book.comments.each do |comment| %>
+				<tr>
+					<td><%= comment.user.name %></td>
+					<td><%= comment.created_at %></td>
+					<td><%= comment.comment %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+
 </div>
 <%= flash[:notice] %>
