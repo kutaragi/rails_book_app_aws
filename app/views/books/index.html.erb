@@ -10,6 +10,12 @@
 
 <div class="main">
 	<h1>Books</h1>
+	<div class="search">
+		<%= search_form_for @q do |f| %>
+			<%= f.search_field :title_cont, class: "search_box" %>
+			<%= f.submit "検索", class: "btn" %>
+		<% end %>
+	</div>
 
 		<table class="table">
 			<thead>
@@ -33,15 +39,8 @@
 						<% end %>
 					</td class="opinion">
 					<td><%= book.body %></td>
-					<td><% if book.favorited_by?(current_user) %>
-							<%= link_to book_favorites_path(book), method: :delete do %>
-								<i class="fa fa-heart" style="color: red;"><%= book.favorites.count %></i>
-							<% end %>
-						<% else %>
-							<%= link_to book_favorites_path(book), method: :post do %>
-								<i class="fa fa-heart"><%= book.favorites.count %></i>
-							<% end %>
-						<% end %>
+					<td id="favorites_<%= book.id %>">
+						<%= render partial: 'favorites/favorite', locals: { book: book} %>
 					</td>
 					<td class="comment-count"><%= book.comments.count%><br>コメント</td>
 				</tr>

@@ -1,0 +1,5 @@
+// 追加したのでコメント一覧を置き換え
+$('#comment_area').html('<%= j(render 'comments/comments', book: @book)%>');
+// $('#favorites_<%= @book.id%>').html("<%= j(render partial: 'favorites/favorite', locals: {book: @book})%>");
+// 入力したフォームを空にしたいのでフォームの読み込み直し
+$('#comment_form').html('<%= j(render 'comments/comment', comment: @comment, book: @book)%>');

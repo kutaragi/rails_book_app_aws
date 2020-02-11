@@ -19,7 +19,8 @@ class BooksController < ApplicationController
 	def index
 		@user = User.find(current_user.id)
   		@post_book = Book.new
-		@books = Book.all
+  		@q = Book.ransack(params[:q])
+		@books = @q.result(distinct: true)
 	end
 	def show
 		@post_book = Book.new

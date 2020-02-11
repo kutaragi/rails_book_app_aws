@@ -1,0 +1,5 @@
+// if (location.pathname == "/books") {
+	$('#favorites_<%= @book.id%>').html("<%= j(render partial: 'favorites/favorite', locals: {book: @book})%>");
+// } else {
+// 	$('#favorites_<%= @book.id%>').html("<%= j(render partial: 'favorites/favorite_detail', locals: {book: @book})%>");
+// }

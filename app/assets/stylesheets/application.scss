@@ -36,8 +36,8 @@ $sp: 760px;
 }
 
 body {
-	color: #082080;
-	background-color: #ffb6c1;
+	color: #09207f;
+	background-color: #fff0f5;
 }
 
 a {
@@ -67,8 +67,8 @@ li {
 .wrap {
 	width: 1000px;
 	margin: 30px auto;
-	background-color: #ffb6c1;
-	border: solid 3px #c71585;
+	background-color: #fff0f5;
+	border: solid 3px #082080;
 	overflow:hidden;
 	border-radius: 10px;
 	box-shadow: 15px 15px #da70d6;
@@ -79,7 +79,7 @@ li {
 	width: 95%;
 	margin: 20px auto;
     padding: 10px 0;
-	background-color: #ffb6c1;
+	background-color: #fff0f5;
 	display: flex;
     justify-content: space-between;
 }
@@ -88,7 +88,7 @@ li {
 	width: 95%;
 	margin: 0 auto 20px;
 	padding-bottom: 40px;
-	background-color: #ffb6c1;
+	background-color: #fff0f5;
 	display: flex;
 	justify-content: space-between;
 }
@@ -97,7 +97,7 @@ li {
 	width: 95%;
 	margin: 0 auto;
 	padding: 20px 0;
-	background-color: #ffb6c1;
+	background-color: #fff0f5;
 }
 
 .logo {
@@ -137,7 +137,7 @@ li {
 }
 
 h1 {
-	border-bottom: solid 2px #fff;
+	border-bottom: solid 2px #09207f;
 	margin: 30px 0;
 	font-family: fantasy;
 }
@@ -153,7 +153,7 @@ h1 {
 .item {
 	font-size: 20px;
     font-weight: 600;
-    border-bottom: solid 1px #fff;
+    border-bottom: solid 1px #09207f;
     margin-bottom: 15px;
 }
 
@@ -181,7 +181,7 @@ label {
 }
 
 td {
-	border: solid 6px #f5b6c1;
+	border: solid 6px #fff0f5;
 }
 
 .comment-count {
@@ -193,13 +193,17 @@ th {
 	padding: 0 0 10px 10px;
 }
 
+thead th {
+	/*border-bottom: 1px solid;*/
+}
+
 .btn {
 	font-size: 20px;
 	background-color: #000080;
 	border-radius: 8px;
 	padding: 10px;
 	color: #fff;
-	border: 3px solid #fff;
+	border: 3px solid #09207f;
 }
 
 .btn:hover {
@@ -301,6 +305,27 @@ th {
 
 .comme table {
 	margin-top: 30px;
+}
+
+.search {
+	margin: 30px 0;
+}
+
+.search_box {
+	font-size: 20px;
+}
+
+.search .btn {
+	font-size: 15px;
+	padding: 3px;
+}
+
+.following {
+	margin: 30px 0;
+}
+
+.follow-btn {
+	margin-top: 20px;
 }
 
 @media only screen and (max-width:765px) {

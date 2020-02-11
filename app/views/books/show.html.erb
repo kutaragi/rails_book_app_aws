@@ -37,44 +37,27 @@
 		</table>
 
 		<!-- いいね -->
-		<div class="favo">
-			<% if @book.favorited_by?(current_user) %>
-				<%= link_to book_favorites_path(@book), method: :delete do %>
-					<i class="fa fa-heart" style="color: red;"></i>
-				<% end %>
-			<% else %>
-				<%= link_to book_favorites_path(@book), method: :post do %>
-					<i class="fa fa-heart"></i>
-				<% end %>
-			<% end %>
-			<%= @book.favorites.count %>いいね
+		<div class="favo", id="favorites_<%= @book.id %>" >
+			<%= render partial: "favorites/favorite", locals: { book: @book}%>
 		</div>
 
 		<!-- コメント -->
-		<div class="comme">
-		<%= form_for [@book, @comment] do |f| %>
-			<%= f.text_area :comment, rows:'5', placeholder: "コメントをどうぞ", class: "comme-text" %><br>
-			<%= f.submit "コメントを送る", class: "btn" %>
-		<% end %>
+		<div class="comme", id="comment_form">
+			<%= render 'comments/comment', comment: @comment, book: @book %>
+		</div>
 		<table>
 			<thead>
 				<tr>
 					<th>User</th>
 					<th>Date</th>
 					<th>Comment</th>
+					<th></th>
 				</tr>
 			</thead>
-			<tbody>
-				<% @book.comments.each do |comment| %>
-				<tr>
-					<td><%= comment.user.name %></td>
-					<td><%= comment.created_at %></td>
-					<td><%= comment.comment %></td>
-				</tr>
-				<% end %>
+			<tbody id="comment_area">
+				<%= render 'comments/comments', book: @book %>
 			</tbody>
 		</table>
-		</div>
 
 </div>
 <%= flash[:notice] %>

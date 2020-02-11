@@ -1,0 +1,4 @@
+<%= form_for [book, comment], remote: true do |f| %>
+	<%= f.text_area :comment, rows:'5', placeholder: "コメントをどうぞ", class: "comme-text" %><br>
+	<%= f.submit "コメントを送る", class: "btn" %>
+<% end %>

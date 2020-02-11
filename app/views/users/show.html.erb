@@ -9,25 +9,17 @@
 		<% end %>
 	</div>
 
-
-	<%= link_to following_user_path do %>
-		The number of follows<%= @user.following.count %>
-	<% end %>
-	<%= link_to followers_user_path do %>
-		The number of followers<%= @user.followers.count %>
-	<% end %>
-	<% if @user != current_user %>
-		<% if current_user.following?(@user) %>
-			<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id), html: {method: :delete}) do |f| %>
-			<%= f.submit "unfollow", class: "btn" %>
-			<% end %>
-		<% else %>
-			<%= form_for(current_user.active_relationships.build) do |f| %>
-				<%= hidden_field_tag :followed_id, @user.id %>
-				<%= f.submit "follow", class: "btn" %>
-			<% end %>
+	<div class="following">
+		<%= link_to following_user_path do %>
+			フォロー:<%= @user.following.count %>
 		<% end %>
-	<% end %>
+		<%= link_to followers_user_path do %>
+			フォロワー:<%= @user.followers.count %>
+		<% end %>
+		<div id="follow_<%= @user.id %>" class="follow-btn btn-wrap">
+			<%= render 'relationships/follow', user: @user %>
+		</div>
+	</div>
 
 	<%= render 'books/new', book: @post_book %>
 </div>

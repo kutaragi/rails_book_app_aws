@@ -1,0 +1,26 @@
+<% book.comments.each do |comment| %>
+<tr>
+	<td><%= comment.user.name %></td>
+	<td><%= comment.created_at %></td>
+	<td><%= comment.comment %></td>
+	<td>
+		<% if comment.user == current_user %>
+		<!-- book_idはurlで必要、comment_idは削除するコメントの特定に必要 -->
+		<!-- link_toの場合！！！ -->
+			<%= link_to book_comments_path(book.id, comment_id: comment.id), remote: true, method: :delete, data: {confirm: "本当に削除しますか？"} do %>
+				<i class="fa fa-trash-o"></i>
+			<% end %>
+		<!-- form_withの場合 -->
+		<!-- コメントアウト -->
+			<% if false %>
+				<%= form_with(model: comment, method: :delete, url: book_comments_path(book.id)) do |f| %>
+					<!-- hidden_fieldでパラメータを渡す -->
+					<%= f.hidden_field :comment_id, :value => comment.id %>
+			
+				<% end %>
+			<% end %>
+		<!-- ここまでコメントアウト -->
+		<% end %>
+	</td>
+</tr>
+<% end %>

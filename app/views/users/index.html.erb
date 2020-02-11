@@ -21,9 +21,15 @@
 				<tr>
 					<td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, format:'jpeg', fallback: "no_image.jpg", :width => "60", :height => "60"%></td>
 					<td class="user_name">
-						<%= user.name %>
+						<%= link_to user_path(user.id) do %>
+							<%= user.name %>
+						<% end %>
 					</td>
-					<td><%= link_to "show", user_path(user.id)%></td>
+					<td>フォロー:<%= user.following.count %></td>
+					<td>フォロワー:<%= user.followers.count %></td>
+					<td id="follow_<%= user.id %>">
+						<%= render 'relationships/follow', user: user %>
+					</td>
 				</tr>
 			</tbody>
 			<% end %>
