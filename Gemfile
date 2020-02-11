@@ -81,4 +81,7 @@ gem 'font-awesome-rails'
 gem 'ransack'
 
 
-gem 'pg', group: :production
+# gem 'pg', group: :production
+group :production do
+  gem 'pg', '< 1.0.0'
+end
