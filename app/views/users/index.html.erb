@@ -14,6 +14,9 @@
 				<tr>
 					<th>image</th>
 					<th>name</th>
+					<th>follow</th>
+					<th>follower</th>
+					<th></th>
 				</tr>
 			</thead>
 			<% @users.each do |user| %>
@@ -25,8 +28,8 @@
 							<%= user.name %>
 						<% end %>
 					</td>
-					<td>フォロー:<%= user.following.count %></td>
-					<td>フォロワー:<%= user.followers.count %></td>
+					<td><%= user.following.count %></td>
+					<td><%= user.followers.count %></td>
 					<td id="follow_<%= user.id %>">
 						<%= render 'relationships/follow', user: user %>
 					</td>

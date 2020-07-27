@@ -1,4 +1,4 @@
-<%= render 'books/errors', book: @post_book %>
+
 
 <div class="aside">
 	<%= render 'users/user', user: @user %>
@@ -6,16 +6,17 @@
 	<div class="btn-wrap"><%= link_to "Edit", edit_user_path(@user), class: "btn"%></div>
 
 	<%= render 'books/new', book: @post_book %>
+	<%= render 'books/errors', book: @post_book %>
 </div>
 
 <div class="main">
 	<h1>Books</h1>
-	<div class="search">
-		<%= search_form_for @q do |f| %>
-			<%= f.search_field :title_cont, class: "search_box" %>
-			<%= f.submit "検索", class: "btn" %>
-		<% end %>
-	</div>
+	<!-- <div class="search">
+		<%#= search_form_for @q do |f| %>
+			<%#= f.search_field :title_cont, class: "search_box" %>
+			<%#= f.submit "検索", class: "btn" %>
+		<%# end %>
+	</div> -->
 
 		<table class="table">
 			<thead>
@@ -24,7 +25,7 @@
 					<th class="title">Title</th>
 					<th class="opinion">Opinion</th>
 					<th></th>
-					<th></th>
+					<th>コメント数</th>
 				</tr>
 			</thead>
 			<% @books.each do |book|%>
@@ -37,15 +38,14 @@
 						<%= link_to book_path(book.id) do %>
 							<%= book.title %>
 						<% end %>
-					</td class="opinion">
-					<td><%= book.body %></td>
+					</td>
+					<td class="opinion"><%= book.body %></td>
 					<td id="favorites_<%= book.id %>">
 						<%= render partial: 'favorites/favorite', locals: { book: book} %>
 					</td>
-					<td class="comment-count"><%= book.comments.count%><br>コメント</td>
+					<td class="comment-count"><%= book.comments.count%></td>
 				</tr>
 			</tbody>
 			<% end %>
 		</table>
 </div>
-<%= flash[:notice]%>

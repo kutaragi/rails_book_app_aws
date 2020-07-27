@@ -11,7 +11,9 @@ class BooksController < ApplicationController
 			redirect_to book_path(@post_book.id)
 		else
 			@user = User.find(current_user.id)
-			@books = Book.all
+			# @books = Book.all
+			@q = Book.ransack(params[:q])
+			@books = @q.result(distinct: true)
 			flash[:notice] = "error"
 			render :index
 		end
@@ -19,8 +21,10 @@ class BooksController < ApplicationController
 	def index
 		@user = User.find(current_user.id)
   		@post_book = Book.new
-  		@q = Book.ransack(params[:q])
-		@books = @q.result(distinct: true)
+  		@books = Book.all
+  		# ransackの場合
+  # 		@q = Book.ransack(params[:q])
+		# @books = @q.result(distinct: true)
 	end
 	def show
 		@post_book = Book.new
