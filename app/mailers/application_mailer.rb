@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'kutaragi.yuta.infratop@gmail.com'
+  default from: ENV['MY_EMAIL']
   layout 'mailer'
 end
