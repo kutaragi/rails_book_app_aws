@@ -22,7 +22,7 @@ test:
 
 production:
   <<: *default
-  adapter: postgresql
+  adapter: mysql2
   encoding: unicode
   pool: 5
 
