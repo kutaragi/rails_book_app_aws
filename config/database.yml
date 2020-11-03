@@ -25,6 +25,6 @@ production:
   adapter: mysql2
   encoding: utf8
   pool: 5
-  socket: <%= Rails.application.credentials.db[:socket] %>
+  socket: Rails.application.credentials.db[:socket]
 
 
