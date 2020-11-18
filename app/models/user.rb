@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   has_many :favorites, dependent: :destroy
 
+  has_many :user_rooms
+
+  has_many :chats
+
   # 一つのテーブルに対して二つのリレーションがあるから(ないと関連づけられない)フォローする/フォローされるの二つのリレーションを作成
   #こちらはユーザー対中間テーブルのリレーション
   has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

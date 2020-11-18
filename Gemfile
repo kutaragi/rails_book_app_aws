@@ -90,5 +90,6 @@ end
 gem 'jp_prefecture'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'pry-rails'
 
 gem 'whenever', require: false

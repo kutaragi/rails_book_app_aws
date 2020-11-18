@@ -1,7 +1,12 @@
-<ul id="message">
-	
-</ul>
+<div id="message" >
+	<%= render 'message', chats: @chats %>
+</div>
 
-<form>
+<!-- <form>
 	<input type="text" data-behavior="chat_input" class="chat-input">
-</form>
+</form> -->
+<%= form_with model: @chat do |f| %>
+	<%= f.text_field :message %>
+	<%= f.hidden_field :room_id %>
+	<%= f.submit %>
+<% end %>
