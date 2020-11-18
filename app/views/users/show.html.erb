@@ -1,6 +1,8 @@
 <div class="aside">
 	<%= render 'users/user', user: @user %>
 
+	<%= link_to "chat", chat_path(@user), class: "btn" %>
+
 	<div class="btn-wrap">
 		<% if @user.id == current_user.id %>
 			<%= link_to "Edit", edit_user_path(current_user.id), class: "btn"%>
